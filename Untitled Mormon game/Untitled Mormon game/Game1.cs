@@ -27,6 +27,8 @@ namespace Untitled_Mormon_game
             }
         }
 
+        private List<GameObject> gameObjects = new List<GameObject>();
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -99,5 +101,10 @@ namespace Untitled_Mormon_game
             base.Draw(gameTime);
         }
 
+
+        public void RemoveGameObject(GameObject go)
+        {
+            gameObjects.Remove(go);
+        }
     }
 }
