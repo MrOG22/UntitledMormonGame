@@ -42,10 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Follower.cs" />
-    <Compile Include="FollowerPool.cs" />
+    <Compile Include="ObjectPool\FollowerPool.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="ObjectPool.cs" />
+    <Compile Include="ObjectPool\ObjectPool.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
