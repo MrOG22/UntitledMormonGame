@@ -20,6 +20,8 @@ namespace Untitled_Mormon_game
         int currentIndex;
 
 
+
+
         public abstract void LoadContent(ContentManager content);
 
         public abstract void Update(GameTime gameTime);

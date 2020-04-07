@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Untitled_Mormon_game
 {
@@ -9,8 +10,26 @@ namespace Untitled_Mormon_game
     /// </summary>
     public class Game1 : Game
     {
+
+        private static Game1 instance;
+
+        public static Game1 Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Game1();
+                }
+
+                return instance;
+
+            }
+        }
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
 
         public Game1()
         {
@@ -79,5 +98,6 @@ namespace Untitled_Mormon_game
 
             base.Draw(gameTime);
         }
+
     }
 }
