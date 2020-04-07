@@ -24,6 +24,11 @@ namespace Untitled_Mormon_game
 
         public abstract void Update(GameTime gameTime);
 
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
+
         protected void Animation(GameTime gameTime)
         {
 
