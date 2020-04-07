@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Untitled_Mormon_game
+{
+    class FollowerPool : ObjectPool
+    {
+        protected override void Cleanup(GameObject gameObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override GameObject Create()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
