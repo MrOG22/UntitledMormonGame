@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Untitled_Mormon_game
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
         Texture2D texture;
         Texture2D[] textures;
