@@ -29,7 +29,7 @@ namespace Untitled_Mormon_game
         }
         public void ReleaseObject(GameObject gameObject)
         {
-            Game1.Instance.RemoveGameObject(gameObject);
+            GameWorld.Instance.RemoveGameObject(gameObject);
             active.Remove(gameObject);
             inactive.Push(gameObject);
         }
