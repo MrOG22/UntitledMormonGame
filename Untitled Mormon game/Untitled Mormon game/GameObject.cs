@@ -18,7 +18,7 @@ namespace Untitled_Mormon_game
         protected Vector2 position;
         protected float speed;
         protected Vector2 velocity;
-        protected Vector2 rotation;
+        protected float rotation;
         protected Vector2 origin;
         protected int fps;
         private int currentIndex;
@@ -33,7 +33,7 @@ namespace Untitled_Mormon_game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 1);
+            spriteBatch.Draw(sprite, position, null, Color.White, rotation, origin, 1, SpriteEffects.None, 1);
         }
 
         protected void Animation(GameTime gameTime)

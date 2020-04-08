@@ -15,7 +15,7 @@ namespace Untitled_Mormon_game
 
         public override void LoadContent(ContentManager content)
         {
-            sprite = content.Load<Texture2D>("player");
+            sprite = content.Load<Texture2D>("WalkUP1");
         }
 
         public override void Update(GameTime gameTime)

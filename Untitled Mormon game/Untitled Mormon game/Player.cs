@@ -6,37 +6,53 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Untitled_Mormon_game
 {
     class Player : GameObject
     {
+        public float rotationVelocity = 3f;
+        public float linearVelocity = 4f;
+        private Vector2 direction;
 
         public Player()
         {
-            this.speed = 100;
+            this.speed = 1000f;
+            this.position.X = 200;
+            this.position.Y = 300;
         }
 
 
         public override void LoadContent(ContentManager content)
         {
-            sprite = content.Load<Texture2D>("player");
+            sprite = content.Load<Texture2D>("WalkUP1");
+            this.origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
         }
 
         public override void Update(GameTime gameTime)
         {
-
+            inputstuff(gameTime);
+            Move(gameTime);
         }
-        public void Move(Vector2 velocity)
+        private void inputstuff(GameTime gameTime)
         {
-            if (velocity != Vector2.Zero)
-        {
-            velocity.Normalize();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                rotation -= MathHelper.ToRadians(rotationVelocity);
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                rotation += MathHelper.ToRadians(rotationVelocity);
+            direction = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+                position += direction * linearVelocity;
+            /*if (Keyboard.GetState().IsKeyDown(Keys.S))
+                position -= direction * linearVelocity;*/
         }
+        public void Move(GameTime gameTime)
+        {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        velocity *= speed;
-
-        //GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
+            position += ((velocity * speed) * deltaTime);
 
         }
     }
