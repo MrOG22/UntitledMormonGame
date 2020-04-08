@@ -6,18 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Untitled_Mormon_game
 {
     public abstract class GameObject
     {
-        Texture2D texture;
-        Texture2D[] textures;
-        Vector2 position;
-        float speed;
-        Vector2 velocity;
-        int fps;
-        int currentIndex;
+        public Transform Transform { get; private set; }
+
+
+
+        protected Texture2D texture;
+        protected Texture2D[] textures;
+        protected Vector2 position;
+        protected float speed;
+        protected Vector2 velocity;
+        protected int fps;
+        private int currentIndex;
 
 
 
