@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Untitled_Mormon_game.CommandPattern
 {
-    interface Command
+    interface ICommand
     {
-
+        void Execute(Player player);
     }
 }

@@ -11,7 +11,13 @@ namespace Untitled_Mormon_game
 {
     class Player : GameObject
     {
-        Texture2D playerTex;
+        public GameObject GameObject { get; set; }
+
+        public Player(Vector2 position, Texture2D playerTex)
+        {
+            this.speed = 100;
+            this.texture = playerTex;
+        }
 
 
         public override void LoadContent(ContentManager content)
@@ -23,9 +29,16 @@ namespace Untitled_Mormon_game
         {
             throw new NotImplementedException();
         }
-
-        private void Move(GameTime gameTime)
+        public void Move(Vector2 velocity)
         {
+            if (velocity != Vector2.Zero)
+        {
+            velocity.Normalize();
+        }
+
+        velocity *= speed;
+
+        //GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
 
         }
     }
