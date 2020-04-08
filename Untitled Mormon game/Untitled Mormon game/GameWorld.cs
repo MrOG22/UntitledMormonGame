@@ -27,7 +27,7 @@ namespace Untitled_Mormon_game
             }
         }
 
-        private List<GameObject> gameObjects = new List<GameObject>();
+        public List<GameObject> gameObjects = new List<GameObject>();
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -62,6 +62,12 @@ namespace Untitled_Mormon_game
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            gameObjects.Add(new Player());
+            gameObjects.Add(new Follower());
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.LoadContent(Content);
+            }
         }
 
         /// <summary>
@@ -85,6 +91,10 @@ namespace Untitled_Mormon_game
 
             // TODO: Add your update logic here
 
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Update(gameTime);
+            }
             base.Update(gameTime);
         }
 
@@ -98,6 +108,13 @@ namespace Untitled_Mormon_game
 
             // TODO: Add your drawing code here
 
+
+            spriteBatch.Begin();
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Draw(spriteBatch);
+            }
+                spriteBatch.End();
             base.Draw(gameTime);
         }
 

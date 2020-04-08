@@ -6,23 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Untitled_Mormon_game
 {
     public abstract class GameObject
     {
-        public Transform Transform { get; private set; }
 
 
-
-        protected Texture2D texture;
+        protected Texture2D sprite;
         protected Texture2D[] textures;
         protected Vector2 position;
         protected float speed;
         protected Vector2 velocity;
+        protected Vector2 rotation;
+        protected Vector2 origin;
         protected int fps;
         private int currentIndex;
+
 
 
 
@@ -33,7 +33,7 @@ namespace Untitled_Mormon_game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(sprite, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 1);
         }
 
         protected void Animation(GameTime gameTime)

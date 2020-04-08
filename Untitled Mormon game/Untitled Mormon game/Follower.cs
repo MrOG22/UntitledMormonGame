@@ -15,12 +15,11 @@ namespace Untitled_Mormon_game
 
         public override void LoadContent(ContentManager content)
         {
-            throw new NotImplementedException();
+            sprite = content.Load<Texture2D>("player");
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
 
         private void Follow()

@@ -11,23 +11,21 @@ namespace Untitled_Mormon_game
 {
     class Player : GameObject
     {
-        public GameObject GameObject { get; set; }
 
-        public Player(Vector2 position, Texture2D playerTex)
+        public Player()
         {
             this.speed = 100;
-            this.texture = playerTex;
         }
 
 
         public override void LoadContent(ContentManager content)
         {
-            throw new NotImplementedException();
+            sprite = content.Load<Texture2D>("player");
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+
         }
         public void Move(Vector2 velocity)
         {
