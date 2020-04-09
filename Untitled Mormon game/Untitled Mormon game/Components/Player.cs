@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Untitled_Mormon_game.Component
+namespace Untitled_Mormon_game.Components
 {
     class Player
     {
