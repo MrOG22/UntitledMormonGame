@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Untitled_Mormon_game.Components
 {
-    class SpriteRenderer
+    class SpriteRenderer : Component
     {
+
     }
 }
