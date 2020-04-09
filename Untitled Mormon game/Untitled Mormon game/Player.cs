@@ -15,13 +15,19 @@ namespace Untitled_Mormon_game
         public float rotationVelocity = 3f;
         public float linearVelocity = 4f;
         private Vector2 direction;
-
-        public Player()
+        private Transform transform;
+        public Player(Vector2 startPosition)
         {
+            transform = new Transform();
+
+            transform.Position = startPosition;
+
             this.speed = 1000f;
             this.position.X = 200;
             this.position.Y = 300;
         }
+
+
 
 
         public override void LoadContent(ContentManager content)
