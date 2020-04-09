@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Untitled_Mormon_game.Components;
 
 namespace Untitled_Mormon_game
 {
@@ -31,7 +32,12 @@ namespace Untitled_Mormon_game
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private Player player;
 
+        /// <summary>
+        /// The Game's deltatime
+        /// </summary>
+        public float DeltaTime { get; set; }
 
         public GameWorld()
         {
@@ -49,6 +55,21 @@ namespace Untitled_Mormon_game
         {
             // TODO: Add your initialization logic here
 
+            GameObject go = new GameObject();
+
+            player = new Player();
+
+            go.AddComponent(player);
+
+            go.AddComponent(new SpriteRenderer());
+
+            gameObjects.Add(go);
+
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Awake();
+            }
+
             base.Initialize();
         }
 
@@ -62,12 +83,17 @@ namespace Untitled_Mormon_game
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            gameObjects.Add(new Player());
-            gameObjects.Add(new Follower());
+            //gameObjects.Add(new Player());
+            //gameObjects.Add(new Follower());
+            //foreach (GameObject gameObject in gameObjects)
+            //{
+            //    gameObject.LoadContent(Content);
+            //}
             foreach (GameObject gameObject in gameObjects)
             {
-                gameObject.LoadContent(Content);
+                gameObject.Start();
             }
+
         }
 
         /// <summary>
@@ -114,7 +140,6 @@ namespace Untitled_Mormon_game
             {
                 gameObject.Draw(spriteBatch);
             }
-                spriteBatch.End();
             base.Draw(gameTime);
         }
 

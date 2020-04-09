@@ -16,7 +16,7 @@ namespace Untitled_Mormon_game.Components
 
         public virtual void Awake()
         {
-
+            
         }
 
         public virtual void Start()

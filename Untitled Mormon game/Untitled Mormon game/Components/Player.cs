@@ -17,38 +17,31 @@ namespace Untitled_Mormon_game.Components
         private float speed;
         private Vector2 position;
 
-        public Player(Vector2 startPosition)
+        public Player()
         {
-            transform = new Transform();
-
-            transform.Position = startPosition;
-
             this.speed = 1000f;
-            this.position.X = 200;
-            this.position.Y = 300;
         }
 
 
 
         public override void Awake()
         {
-
+            GameObject.Transform.Position = new Vector2(GameWorld.Instance.GraphicsDevice.Viewport.Width / 2,
+            GameWorld.Instance.GraphicsDevice.Viewport.Height); ;
         }
 
         public override void Start()
         {
-
+            SpriteRenderer sr = (SpriteRenderer)GameObject.GetComponent("SpriteRenderer");
+            sr.SetSprite("WalkUp1");
+            sr.Origin = new Vector2(sr.Sprite.Width / 2, (sr.Sprite.Height / 2) + 35);
         }
 
-        public override void Update(GameTime gameTime)
+        public override string ToString()
         {
-
+            return "Player";
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
 
 
     }
