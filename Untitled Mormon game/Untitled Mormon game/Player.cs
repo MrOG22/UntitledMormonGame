@@ -7,14 +7,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Untitled_Mormon_game.CommandPattern;
 
 namespace Untitled_Mormon_game
 {
     class Player : GameObject
     {
-        public float rotationVelocity = 3f;
+        /*public float rotationVelocity = 3f;
         public float linearVelocity = 4f;
-        private Vector2 direction;
+        private Vector2 direction;*/
         private Transform transform;
         public Player(Vector2 startPosition)
         {
@@ -22,9 +23,10 @@ namespace Untitled_Mormon_game
 
             transform.Position = startPosition;
 
-            this.speed = 1000f;
+            this.speed = 100f;
             this.position.X = 200;
             this.position.Y = 300;
+            InputHandler.Instance.Entity = this;
         }
 
 
@@ -38,10 +40,10 @@ namespace Untitled_Mormon_game
 
         public override void Update(GameTime gameTime)
         {
-            inputstuff(gameTime);
-            Move(gameTime);
+            //inputstuff(gameTime);
+            //Move(velocity);
         }
-        private void inputstuff(GameTime gameTime)
+        /*private void inputstuff(GameTime gameTime)
         {
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
@@ -51,15 +53,12 @@ namespace Untitled_Mormon_game
             direction = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
             if (Keyboard.GetState().IsKeyDown(Keys.W))
                 position += direction * linearVelocity;
-            /*if (Keyboard.GetState().IsKeyDown(Keys.S))
-                position -= direction * linearVelocity;*/
-        }
-        public void Move(GameTime gameTime)
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+                position -= direction * linearVelocity;
+        }*/
+        public void Move(Vector2 velocity)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            position += ((velocity * speed) * deltaTime);
-
+            position += ((velocity * speed) * GameWorld.DeltaTime);
         }
     }
 }
