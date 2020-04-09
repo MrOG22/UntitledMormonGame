@@ -6,40 +6,77 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Untitled_Mormon_game.Components;
 
 namespace Untitled_Mormon_game
 {
-    public abstract class GameObject
+    public class GameObject
     {
+        public Transform Transform { get; private set; }
+
+        private Dictionary<string, Component> components = new Dictionary<string, Component>();
+
+        public string Tag { get; set; }
 
 
-        protected Texture2D sprite;
-        protected Texture2D[] textures;
-        protected Vector2 position;
-        protected float speed;
-        protected Vector2 velocity;
-        protected float rotation;
-        protected Vector2 origin;
-        protected int fps;
-        private int currentIndex;
+        public GameObject()
+        {
+            Transform = new Transform();
+        }
 
+        public void AddComponent(Component component)
+        {
+            components.Add(component.ToString(), component);
+            component.GameObject = this;
+        }
 
+        public Component GetComponent(string component)
+        {
+            return components[component];
+        }
 
+        public void Awake()
+        {
+            foreach (Component component in components.Values)
+            {
+                component.Awake();
+            }
+        }
 
+        public void Start()
+        {
+            foreach (Component component in components.Values)
+            {
+                component.Start();
+            }
+        }
 
-        public abstract void LoadContent(ContentManager content);
+        public void Update(GameTime gameTime)
+        {
+            foreach (Component component in components.Values)
+            {
+                if (component.IsEnabled)
+                {
+                    component.Update(gameTime);
+                }
 
-        public abstract void Update(GameTime gameTime);
+            }
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, position, null, Color.White, rotation, origin, 1, SpriteEffects.None, 1);
+            foreach (Component component in components.Values)
+            {
+                if (component.IsEnabled)
+                {
+                    component.Draw(spriteBatch);
+                }
+            }
         }
 
-        protected void Animation(GameTime gameTime)
-        {
 
-        }
+
+
 
 
     }

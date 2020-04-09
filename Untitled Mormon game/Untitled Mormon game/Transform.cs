@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Untitled_Mormon_game
 {
-    class Transform
+    public class Transform
     {
         /// <summary>
         /// The transform's position
