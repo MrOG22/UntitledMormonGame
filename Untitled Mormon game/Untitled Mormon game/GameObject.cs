@@ -11,7 +11,7 @@ namespace Untitled_Mormon_game
 {
     public abstract class GameObject
     {
-
+        //d
 
         protected Texture2D sprite;
         protected Texture2D[] textures;
