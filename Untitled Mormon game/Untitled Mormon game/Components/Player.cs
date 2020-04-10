@@ -13,7 +13,7 @@ namespace Untitled_Mormon_game.Components
         public float rotationVelocity = 3f;
         public float linearVelocity = 4f;
         private Vector2 direction;
-        private Transform transform;
+        private Transform Transform;
         private float speed;
         private Vector2 position;
 
@@ -42,6 +42,13 @@ namespace Untitled_Mormon_game.Components
             return "Player";
         }
 
+        public void Move(GameTime gameTime)
+        {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            position += ((velocity * speed) * deltaTime);
+
+        }
 
 
     }
