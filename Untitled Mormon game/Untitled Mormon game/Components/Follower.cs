@@ -15,6 +15,10 @@ namespace Untitled_Mormon_game.Components
         public Vector2 position;
 
 
+        public static float followerPositionX;
+        public static float followerPositionY;
+
+
         public Follower(float speed, Vector2 velocity, Vector2 position)
         {
             this.speed = speed;
@@ -23,9 +27,35 @@ namespace Untitled_Mormon_game.Components
 
         }
 
+        public Follower()
+        {
+        }
+
+        float distanceX;
+        float distanceY;
+
+
         public override void Update(GameTime gameTime)
         {
-            Follow();
+
+            distanceX = Player.playerPositionX - GameObject.Transform.Position.X;
+            distanceY = Player.playerPositionY - GameObject.Transform.Position.Y;
+
+
+            if (distanceX <= 10)
+            {
+                Follow();
+
+                followerPositionX += speed;
+            }
+
+            if (distanceY <= 10)
+            {
+                Follow();
+
+                followerPositionY += speed;
+            }
+     
         }
 
         public void Idle()
@@ -35,40 +65,38 @@ namespace Untitled_Mormon_game.Components
 
         public void Follow()
         {
-           // Makes the follower move
-            GameObject.Transform.Translate(velocity * speed * GameWorld.Instance.DeltaTime);
+            // Makes the follower move
+            //GameObject.Transform.Translate(velocity * speed * GameWorld.Instance.DeltaTime);
 
-            // Test 1
+            followerPositionX = GameObject.Transform.Position.X;
+            followerPositionY = GameObject.Transform.Position.Y;
+      
+            Vector2 direction = Player.playerPosition - GameObject.Transform.Position;
+            direction.Normalize();
+            velocity = direction * speed;
+            GameObject.Transform.Position += velocity;
 
-            if (position.X < Player.playerPosition.X)
-            {
-                position.X += speed;
-            }
+            //foreach (GameObject gameObject in GameWorld.Instance.gameObjects)
+            //{
+                //if (followerPositionX < Player.playerPositionX)
+                //{
+                //    followerPositionX += speed;
+                //}
 
-            if (position.Y < Player.playerPosition.Y)
-            {
-                position.Y += speed;
-            }
-            if (position.X > Player.playerPosition.X)
-            {
-                position.X -= speed;
-            }
-            if (position.Y > Player.playerPosition.Y)
-            {
-                position.Y -= speed;
-            }
+                //if (followerPositionY < Player.playerPositionY)
+                //{
+                //    followerPositionY += speed;
+                //}
+                //if (followerPositionX > Player.playerPositionX)
+                //{
+                //    followerPositionX -= speed;
+                //}
+                //if (followerPositionY > Player.playerPositionY)
+                //{
+                //    followerPositionY -= speed;
+                //}
 
-
-            // Test 2
-
-            //Vector2 direction = Player.playerPosition - GameObject.Transform.Position;
-            //direction.Normalize();
-            //velocity = direction * speed;
-            //GameObject.Transform.Position += velocity;
-
-
-            //Debug.WriteLine(Player.playerPosition);
-
+            //}
         }
 
     }

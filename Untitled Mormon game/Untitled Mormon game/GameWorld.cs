@@ -121,6 +121,7 @@ namespace Untitled_Mormon_game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             InputHandler.Instance.Execute(player);
@@ -131,7 +132,7 @@ namespace Untitled_Mormon_game
             {
                 gameObject.Update(gameTime);
             }
-
+            
             SpawnFollower();
 
             base.Update(gameTime);
@@ -170,7 +171,7 @@ namespace Untitled_Mormon_game
             if (spawnTime >= cooldown)
             {
                 GameObject go = FollowerPool.Instance.GetObject();
-                go.Transform.Position = new Vector2(rnd.Next(0, GraphicsDevice.Viewport.Width), rnd.Next(0, GraphicsDevice.Viewport.Height));
+                go.Transform.Position = new Vector2(rnd.Next(0, GraphicsDevice.Viewport.Width - 50), rnd.Next(0, GraphicsDevice.Viewport.Height - 50));
                 gameObjects.Add(go);
                 spawnTime = 0;
             }
