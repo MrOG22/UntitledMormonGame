@@ -170,7 +170,7 @@ namespace Untitled_Mormon_game
             if (spawnTime >= cooldown)
             {
                 GameObject go = FollowerPool.Instance.GetObject();
-                go.Transform.Position = new Vector2(rnd.Next(0, GraphicsDevice.Viewport.Width), 0);
+                go.Transform.Position = new Vector2(rnd.Next(0, GraphicsDevice.Viewport.Width), rnd.Next(0, GraphicsDevice.Viewport.Height));
                 gameObjects.Add(go);
                 spawnTime = 0;
             }
