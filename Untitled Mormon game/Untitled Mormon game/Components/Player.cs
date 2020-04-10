@@ -20,6 +20,7 @@ namespace Untitled_Mormon_game.Components
         public Player()
         {
             this.speed = 1000f;
+            //hej
         }
 
 
