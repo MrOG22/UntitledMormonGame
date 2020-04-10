@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Untitled_Mormon_game.CommandPattern;
 
 namespace Untitled_Mormon_game.Components
 {
@@ -12,15 +13,18 @@ namespace Untitled_Mormon_game.Components
     {
         public float rotationVelocity = 3f;
         public float linearVelocity = 4f;
-        private Vector2 direction;
-        private Transform Transform;
         private float speed;
         private Vector2 velocity;
         private Vector2 position;
+        private Transform transform;
 
-        public Player()
+        public Player(Vector2 startPosition)
         {
+            transform = new Transform();
+
+            transform.Position = startPosition;
             this.speed = 1000f;
+            InputHandler.Instance.Entity = this;
             //hej
         }
 
@@ -44,11 +48,9 @@ namespace Untitled_Mormon_game.Components
             return "Player";
         }
 
-        public void Move(GameTime gameTime)
+        public void Move(Vector2 velocity)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            position += ((velocity * speed) * deltaTime);
+            position += ((velocity * speed) * GameWorld.DeltaTime);
 
         }
 

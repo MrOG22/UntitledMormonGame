@@ -11,14 +11,9 @@ namespace Untitled_Mormon_game.CommandPattern
 {
     class InputHandler
     {
-        /// <summary>
-        /// InputHandler's singleton instance
-        /// </summary>
         private static InputHandler instance;
 
-        /// <summary>
-        /// Property for accessing the inputhandler's singleton
-        /// </summary>
+
         public static InputHandler Instance
         {
             get
@@ -36,27 +31,27 @@ namespace Untitled_Mormon_game.CommandPattern
 
         public Player Entity { get; set; }
 
-        /// <summary>
-        /// En dictionary, som indeholder alle keybinds og commands
-        /// </summary>
-        private Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
+
+        public Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
 
 
 
-        private InputHandler()
+        public InputHandler()
         {
-            //Opretter keybinds
-            keybinds.Add(Keys.W, new MoveCommand(new Vector2(0, 1)));
             keybinds.Add(Keys.A, new MoveCommand(new Vector2(-1, 0)));
-            keybinds.Add(Keys.S, new MoveCommand(new Vector2(0, -1)));
             keybinds.Add(Keys.D, new MoveCommand(new Vector2(1, 0)));
+            keybinds.Add(Keys.W, new MoveCommand(new Vector2(0, -1)));
+            keybinds.Add(Keys.S, new MoveCommand(new Vector2(0, 1)));
+            /*
+            direction = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
+            keybinds.Add(Keys.A, new MoveCommand(new Vector2(rotation -= MathHelper.ToRadians(rotationVelocity))));
+            keybinds.Add(Keys.D, new MoveCommand(new Vector2(rotation += MathHelper.ToRadians(rotationVelocity))));
+            keybinds.Add(Keys.W, new MoveCommand(position += direction * linearVelocity));
+            keybinds.Add(Keys.S, new MoveCommand(position -= direction * linearVelocity));*/
         }
 
-        /// <summary>
-        /// Kontrollerer om spilleren trykker på nogle af de gemte keybinds
-        /// </summary>
-        /// <param name="player">Den eneity vi kontrollerer</param>
-        public void Execute()
+
+        public void Execute(Player player)
         {
             KeyboardState keyState = Keyboard.GetState();
 

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Untitled_Mormon_game.CommandPattern;
 using Untitled_Mormon_game.Components;
 
 namespace Untitled_Mormon_game
@@ -13,6 +14,7 @@ namespace Untitled_Mormon_game
     {
 
         private static GameWorld instance;
+        private Player player;
 
         public static GameWorld Instance
         {
@@ -32,12 +34,12 @@ namespace Untitled_Mormon_game
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private Player player;
+
 
         /// <summary>
         /// The Game's deltatime
         /// </summary>
-        public float DeltaTime { get; set; }
+        public static float DeltaTime { get; set; }
 
         public GameWorld()
         {
@@ -57,7 +59,7 @@ namespace Untitled_Mormon_game
 
             GameObject go = new GameObject();
 
-            player = new Player();
+            player = new Player(new Vector2(100,100));
 
             go.AddComponent(player);
 
@@ -116,11 +118,12 @@ namespace Untitled_Mormon_game
                 Exit();
 
             // TODO: Add your update logic here
-
+            InputHandler.Instance.Execute(player);
             foreach (GameObject gameObject in gameObjects)
             {
                 gameObject.Update(gameTime);
             }
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
         }
 

@@ -27,7 +27,7 @@ namespace Untitled_Mormon_game.CommandPattern
         /// <param name="player"></param>
         public void Execute(Player player)
         {
-            //player.Move(velocity);
+            player.Move(velocity);
         }
     }
 }
