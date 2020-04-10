@@ -89,7 +89,7 @@ namespace Untitled_Mormon_game
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             background = Content.Load<Texture2D>("background-1");
-            //text = Content.Load<SpriteFont>("File.spritefont");
+            text = Content.Load<SpriteFont>("Text");
 
             // TODO: use this.Content to load your game content here
 
@@ -151,14 +151,14 @@ namespace Untitled_Mormon_game
 
             spriteBatch.Draw(background, new Vector2(0,0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
 
-            //spriteBatch.DrawString(text, "CATCH AS MANY FOOLLOWERS POSSIBLE",
-            //                             new Vector2(50, graphics.GraphicsDevice.Viewport.Height / 2),
-            //                             Color.White,
-            //                             0,
-            //                             Vector2.Zero,
-            //                             1,
-            //                             SpriteEffects.None,
-            //                             1f);
+            spriteBatch.DrawString(text,  "CATCH AS MANY FOOLLOWERS POSSIBLE",
+                                         new Vector2(50, graphics.GraphicsDevice.Viewport.Height / 2),
+                                         Color.Red,
+                                        0,
+                                        Vector2.Zero,
+                                       1,
+                                         SpriteEffects.None,
+                                         1f);
 
             foreach (GameObject gameObject in gameObjects)
             {
