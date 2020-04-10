@@ -37,7 +37,7 @@ namespace Untitled_Mormon_game
             spriteBatch.Draw(sprite, position, null, Color.White, rotation, origin, 1, SpriteEffects.None, 1);
         }
 
-        protected void Animation(GameTime gameTime)
+        public void Animation(GameTime gameTime)
         {
             timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
             currentIndex = (int)(timeElapsed * fps);

@@ -36,7 +36,7 @@ namespace Untitled_Mormon_game
         {
             sprites = new Texture2D[3];
 
-            for(int i = 0; i < sprites.Length; i++)
+            for (int i = 0; i < sprites.Length; i++)
             {
                 sprites[i] = content.Load<Texture2D>(i + 1 + "WalkUP");
             }
@@ -50,7 +50,10 @@ namespace Untitled_Mormon_game
         {
             //inputstuff(gameTime);
             //Move(velocity);
+            if (Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.D))
+            {
             Animation(gameTime);
+            }
         }
         /*private void inputstuff(GameTime gameTime)
         {

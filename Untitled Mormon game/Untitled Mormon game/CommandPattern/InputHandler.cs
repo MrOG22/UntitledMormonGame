@@ -37,7 +37,7 @@ namespace Untitled_Mormon_game.CommandPattern
         public Player Entity { get; set; }
 
 
-        private Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
+        public Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
 
 
 
