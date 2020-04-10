@@ -9,7 +9,7 @@ using Untitled_Mormon_game.CommandPattern;
 
 namespace Untitled_Mormon_game.Components
 {
-    class Player : Component
+    public class Player : Component
     {
         protected Texture2D sprite;
         protected Texture2D[] sprites;
@@ -21,6 +21,7 @@ namespace Untitled_Mormon_game.Components
         private int currentIndex;
 
 
+        public static Vector2 playerPosition;
 
 
         public float rotationVelocity = 3f;
@@ -85,7 +86,7 @@ namespace Untitled_Mormon_game.Components
                 velocity.Normalize();
             }
 
-            velocity *= speed;
+            playerPosition = velocity *= speed;
 
             GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
 

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Untitled_Mormon_game.CommandPattern;
 using Untitled_Mormon_game.Components;
 
@@ -120,7 +121,6 @@ namespace Untitled_Mormon_game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             InputHandler.Instance.Execute(player);
@@ -132,7 +132,7 @@ namespace Untitled_Mormon_game
                 gameObject.Update(gameTime);
             }
 
-            SpawnEnemy();
+            SpawnFollower();
 
             base.Update(gameTime);
         }
@@ -163,7 +163,7 @@ namespace Untitled_Mormon_game
             gameObjects.Remove(go);
         }
 
-        private void SpawnEnemy()
+        private void SpawnFollower()
         {
             spawnTime += DeltaTime;
 
