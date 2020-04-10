@@ -14,13 +14,14 @@ namespace Untitled_Mormon_game
 
 
         protected Texture2D sprite;
-        protected Texture2D[] textures;
+        protected Texture2D[] sprites;
         protected Vector2 position;
         protected float speed;
         protected Vector2 velocity;
         protected float rotation;
         protected Vector2 origin;
         protected int fps;
+        private float timeElapsed;
         private int currentIndex;
 
 
@@ -38,7 +39,15 @@ namespace Untitled_Mormon_game
 
         protected void Animation(GameTime gameTime)
         {
+            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            currentIndex = (int)(timeElapsed * fps);
+            sprite = sprites[currentIndex];
 
+            if (currentIndex >= sprites.Length - 1)
+            {
+                timeElapsed = 0;
+                currentIndex = 0;
+            }
         }
 
 

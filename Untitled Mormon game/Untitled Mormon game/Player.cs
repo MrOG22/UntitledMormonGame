@@ -34,7 +34,15 @@ namespace Untitled_Mormon_game
 
         public override void LoadContent(ContentManager content)
         {
-            sprite = content.Load<Texture2D>("WalkUP1");
+            sprites = new Texture2D[3];
+
+            for(int i = 0; i < sprites.Length; i++)
+            {
+                sprites[i] = content.Load<Texture2D>(i + 1 + "WalkUP");
+            }
+            fps = 3;
+            sprite = sprites[0];
+
             this.origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
         }
 
@@ -42,6 +50,7 @@ namespace Untitled_Mormon_game
         {
             //inputstuff(gameTime);
             //Move(velocity);
+            Animation(gameTime);
         }
         /*private void inputstuff(GameTime gameTime)
         {
