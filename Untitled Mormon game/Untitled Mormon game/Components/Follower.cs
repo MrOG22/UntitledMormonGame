@@ -19,12 +19,10 @@ namespace Untitled_Mormon_game.Components
         public static float followerPositionY;
 
 
-        public Follower(float speed, Vector2 velocity, Vector2 position)
+        public Follower(float speed, Vector2 position)
         {
             this.speed = speed;
-            this.velocity = velocity;
             this.position = position;
-
         }
 
         public Follower()
@@ -42,14 +40,14 @@ namespace Untitled_Mormon_game.Components
             distanceY = Player.playerPositionY - GameObject.Transform.Position.Y;
 
 
-            if (distanceX <= 10)
+            if (distanceX <= 20)
             {
                 Follow();
 
                 followerPositionX += speed;
             }
 
-            if (distanceY <= 10)
+            if (distanceY <= 20)
             {
                 Follow();
 

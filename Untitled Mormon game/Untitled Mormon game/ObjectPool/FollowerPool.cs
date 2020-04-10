@@ -30,7 +30,7 @@ namespace Untitled_Mormon_game
 
         protected override GameObject Create()
         {
-            return EnemyFactory.Instance.Create("Blue");
+            return EnemyFactory.Instance.Create("Follower");
         }
     }
 }

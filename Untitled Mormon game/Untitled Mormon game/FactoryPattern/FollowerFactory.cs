@@ -35,14 +35,11 @@ namespace Untitled_Mormon_game
 
             switch (type)
             {
-                case "Blue":
+                case "Follower":
                     sr.SetSprite("LeftWalk1");
-                    go.AddComponent(new Follower(50, new Vector2(0, 1), Vector2.Zero));
+                    go.AddComponent(new Follower(20, Vector2.Zero));
                     break;
-                case "Black":
-                    sr.SetSprite("LeftWalk2");
-                    go.AddComponent(new Follower(100, new Vector2(0, 1), Vector2.Zero));
-                    break;
+            
 
             }
 
