@@ -34,7 +34,6 @@ namespace Untitled_Mormon_game.Components
         private float speed;
         private Vector2 position;
         private Vector2 velocity;
-        //private Transform transform;
 
         Follower fol = new Follower();
 
@@ -42,13 +41,9 @@ namespace Untitled_Mormon_game.Components
 
         public Player(Vector2 startPosition)
         {
-            //transform = new Transform();
-
-
 
             this.speed = 100f;
-            //this.position.X = transform.Position.X;
-            //this.position.Y = transform.Position.Y;
+   
             InputHandler.Instance.Entity = this;
         }
 
@@ -108,13 +103,11 @@ namespace Untitled_Mormon_game.Components
 
             velocity *= speed;
 
-            //Debug.WriteLine("PLAYER" + playerPositionX);
-            //Debug.WriteLine("PLAYER" + playerPositionY);
+           
 
 
             GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
 
-            //Debug.WriteLine(transform.Position);
 
         }
     }

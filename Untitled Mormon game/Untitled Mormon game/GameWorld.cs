@@ -39,10 +39,10 @@ namespace Untitled_Mormon_game
         private Player player;
         private float spawnTime;
         private float cooldown = 5;
+        private SpriteFont text;
+        private Texture2D background;
 
-        /// <summary>
-        /// The Game's deltatime
-        /// </summary>
+
         public float DeltaTime { get; set; }
 
         public GameWorld()
@@ -88,13 +88,11 @@ namespace Untitled_Mormon_game
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            background = Content.Load<Texture2D>("background-1");
+            //text = Content.Load<SpriteFont>("File.spritefont");
+
             // TODO: use this.Content to load your game content here
-            //gameObjects.Add(new Player());
-            //gameObjects.Add(new Follower());
-            //foreach (GameObject gameObject in gameObjects)
-            //{
-            //    gameObject.LoadContent(Content);
-            //}
+
             foreach (GameObject gameObject in gameObjects)
             {
                 gameObject.Start();
@@ -150,6 +148,18 @@ namespace Untitled_Mormon_game
 
 
             spriteBatch.Begin();
+
+            spriteBatch.Draw(background, new Vector2(0,0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+
+            //spriteBatch.DrawString(text, "CATCH AS MANY FOOLLOWERS POSSIBLE",
+            //                             new Vector2(50, graphics.GraphicsDevice.Viewport.Height / 2),
+            //                             Color.White,
+            //                             0,
+            //                             Vector2.Zero,
+            //                             1,
+            //                             SpriteEffects.None,
+            //                             1f);
+
             foreach (GameObject gameObject in gameObjects)
             {
                 gameObject.Draw(spriteBatch);

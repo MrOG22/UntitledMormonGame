@@ -63,8 +63,7 @@ namespace Untitled_Mormon_game.Components
 
         public void Follow()
         {
-            // Makes the follower move
-            //GameObject.Transform.Translate(velocity * speed * GameWorld.Instance.DeltaTime);
+
 
             followerPositionX = GameObject.Transform.Position.X;
             followerPositionY = GameObject.Transform.Position.Y;
@@ -74,27 +73,6 @@ namespace Untitled_Mormon_game.Components
             velocity = direction * speed;
             GameObject.Transform.Position += velocity;
 
-            //foreach (GameObject gameObject in GameWorld.Instance.gameObjects)
-            //{
-                //if (followerPositionX < Player.playerPositionX)
-                //{
-                //    followerPositionX += speed;
-                //}
-
-                //if (followerPositionY < Player.playerPositionY)
-                //{
-                //    followerPositionY += speed;
-                //}
-                //if (followerPositionX > Player.playerPositionX)
-                //{
-                //    followerPositionX -= speed;
-                //}
-                //if (followerPositionY > Player.playerPositionY)
-                //{
-                //    followerPositionY -= speed;
-                //}
-
-            //}
         }
 
     }
