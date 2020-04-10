@@ -146,7 +146,7 @@ namespace Untitled_Mormon_game
 
             // TODO: Add your drawing code here
 
-
+            //
             spriteBatch.Begin();
 
             spriteBatch.Draw(background, new Vector2(0,0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
