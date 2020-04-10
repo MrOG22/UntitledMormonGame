@@ -15,6 +15,7 @@ namespace Untitled_Mormon_game.Components
         private Vector2 direction;
         private Transform Transform;
         private float speed;
+        private Vector2 velocity;
         private Vector2 position;
 
         public Player()

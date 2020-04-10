@@ -140,6 +140,7 @@ namespace Untitled_Mormon_game
             {
                 gameObject.Draw(spriteBatch);
             }
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 
