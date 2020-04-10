@@ -46,17 +46,17 @@ namespace Untitled_Mormon_game.CommandPattern
         private InputHandler()
         {
             //Opretter keybinds
-            keybinds.Add(Keys.W, new MoveCommand(new Vector2(0, 1)));
             keybinds.Add(Keys.A, new MoveCommand(new Vector2(-1, 0)));
-            keybinds.Add(Keys.S, new MoveCommand(new Vector2(0, -1)));
             keybinds.Add(Keys.D, new MoveCommand(new Vector2(1, 0)));
+            keybinds.Add(Keys.W, new MoveCommand(new Vector2(0, -1)));
+            keybinds.Add(Keys.S, new MoveCommand(new Vector2(0, 1)));
         }
 
         /// <summary>
         /// Kontrollerer om spilleren trykker på nogle af de gemte keybinds
         /// </summary>
         /// <param name="player">Den eneity vi kontrollerer</param>
-        public void Execute()
+        public void Execute(Player player)
         {
             KeyboardState keyState = Keyboard.GetState();
 

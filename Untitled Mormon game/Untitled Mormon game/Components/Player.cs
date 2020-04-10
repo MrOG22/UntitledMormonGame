@@ -5,29 +5,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Untitled_Mormon_game.CommandPattern;
 
 namespace Untitled_Mormon_game.Components
 {
     class Player : Component
     {
+        protected Texture2D sprite;
+        protected Texture2D[] sprites;
+
+        protected float rotation;
+        protected Vector2 origin;
+        protected int fps;
+        private float timeElapsed;
+        private int currentIndex;
+
+
+
+
         public float rotationVelocity = 3f;
         public float linearVelocity = 4f;
         private Vector2 direction;
         private Transform Transform;
         private float speed;
         private Vector2 position;
-
-        public Player()
+        private Vector2 velocity;
+        private Transform transform;
+        public Player(Vector2 startPosition)
         {
-            this.speed = 1000f;
+            transform = new Transform();
+
+            transform.Position = startPosition;
+
+            this.speed = 100f;
+            this.position.X = 200;
+            this.position.Y = 300;
+            InputHandler.Instance.Entity = this;
         }
 
+        protected void Animation(GameTime gameTime)
+        {
+            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            currentIndex = (int)(timeElapsed * fps);
+            sprite = sprites[currentIndex];
+
+            if (currentIndex >= sprites.Length - 1)
+            {
+                timeElapsed = 0;
+                currentIndex = 0;
+            }
+        }
 
 
         public override void Awake()
         {
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.GraphicsDevice.Viewport.Width / 2,
-            GameWorld.Instance.GraphicsDevice.Viewport.Height); ;
+            GameWorld.Instance.GraphicsDevice.Viewport.Height);
         }
 
         public override void Start()
@@ -42,14 +75,21 @@ namespace Untitled_Mormon_game.Components
             return "Player";
         }
 
-        public void Move(GameTime gameTime)
-        {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            position += ((velocity * speed) * deltaTime);
+
+
+        public void Move(Vector2 velocity)
+        {
+            if (velocity != Vector2.Zero)
+            {
+                velocity.Normalize();
+            }
+
+            velocity *= speed;
+
+            GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
+
 
         }
-
-
     }
 }

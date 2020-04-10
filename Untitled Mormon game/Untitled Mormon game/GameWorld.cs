@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Untitled_Mormon_game.CommandPattern;
 using Untitled_Mormon_game.Components;
 
 namespace Untitled_Mormon_game
@@ -57,7 +58,7 @@ namespace Untitled_Mormon_game
 
             GameObject go = new GameObject();
 
-            player = new Player();
+            player = new Player(new Vector2(200,200));
 
             go.AddComponent(player);
 
@@ -115,6 +116,11 @@ namespace Untitled_Mormon_game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            InputHandler.Instance.Execute(player);
+
             // TODO: Add your update logic here
 
             foreach (GameObject gameObject in gameObjects)
@@ -140,6 +146,7 @@ namespace Untitled_Mormon_game
             {
                 gameObject.Draw(spriteBatch);
             }
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

@@ -26,7 +26,7 @@ namespace Untitled_Mormon_game.Components
 
         public virtual void Update(GameTime gameTime)
         {
-
+            
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

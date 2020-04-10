@@ -74,8 +74,7 @@ namespace Untitled_Mormon_game
             }
         }
 
-
-
+     
 
 
 
