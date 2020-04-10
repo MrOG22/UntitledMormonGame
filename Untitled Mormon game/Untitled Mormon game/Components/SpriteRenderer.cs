@@ -29,5 +29,10 @@ namespace Untitled_Mormon_game.Components
         {
             return "SpriteRenderer";
         }
+
+        public SpriteRenderer Clone()
+        {
+            return (SpriteRenderer)this.MemberwiseClone();
+        }
     }
 }

@@ -48,6 +48,8 @@
     <Compile Include="Components\Follower.cs" />
     <Compile Include="Components\Player.cs" />
     <Compile Include="Components\SpriteRenderer.cs" />
+    <Compile Include="FactoryPattern\EnemyFactory.cs" />
+    <Compile Include="FactoryPattern\Factory.cs" />
     <Compile Include="Follower.cs" />
     <Compile Include="ObjectPool\FollowerPool.cs" />
     <Compile Include="GameWorld.cs" />

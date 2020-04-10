@@ -8,14 +8,29 @@ namespace Untitled_Mormon_game
 {
     class FollowerPool : ObjectPool
     {
+
+        private static FollowerPool instance;
+
+        public static FollowerPool Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new FollowerPool();
+                }
+                return instance;
+            }
+        }
+
         protected override void Cleanup(GameObject gameObject)
         {
-            throw new NotImplementedException();
+
         }
 
         protected override GameObject Create()
         {
-            throw new NotImplementedException();
+            return EnemyFactory.Instance.Create("Blue");
         }
     }
 }

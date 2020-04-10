@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using Untitled_Mormon_game.CommandPattern;
 using Untitled_Mormon_game.Components;
@@ -30,10 +31,13 @@ namespace Untitled_Mormon_game
         }
 
         public List<GameObject> gameObjects = new List<GameObject>();
+        private Random rnd = new Random();
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private Player player;
+        private float spawnTime;
+        private float cooldown = 5;
 
         /// <summary>
         /// The Game's deltatime
@@ -127,6 +131,9 @@ namespace Untitled_Mormon_game
             {
                 gameObject.Update(gameTime);
             }
+
+            SpawnEnemy();
+
             base.Update(gameTime);
         }
 
@@ -154,6 +161,19 @@ namespace Untitled_Mormon_game
         public void RemoveGameObject(GameObject go)
         {
             gameObjects.Remove(go);
+        }
+
+        private void SpawnEnemy()
+        {
+            spawnTime += DeltaTime;
+
+            if (spawnTime >= cooldown)
+            {
+                GameObject go = FollowerPool.Instance.GetObject();
+                go.Transform.Position = new Vector2(rnd.Next(0, GraphicsDevice.Viewport.Width), 0);
+                gameObjects.Add(go);
+                spawnTime = 0;
+            }
         }
     }
 }
